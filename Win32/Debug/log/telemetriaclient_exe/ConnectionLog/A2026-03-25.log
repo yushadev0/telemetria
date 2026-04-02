@@ -1,0 +1,3 @@
+TelemetriaClient.exe: 00001C28: 16:52:58 [127.0.0.1]:Failed Sequence Recovery: SeqId: 13, Event: LoadTelemetryEvent
+TelemetriaClient.exe: 00001C28: 16:53:04 [127.0.0.1]:Sequence sent from cache:  SeqId: 13
+TelemetriaClient.exe: 00001C28: 16:53:04 [127.0.0.1]:Processed: Id: 13, Evt: LoadTelemetryEvent, [N45HPBhmzG112D13EC1]

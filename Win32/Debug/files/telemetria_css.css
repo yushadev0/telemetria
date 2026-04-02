@@ -1,0 +1,744 @@
+/* ==========================================================================
+   1. GLOBAL DEĞİŞKENLER VE TEMALAR
+   ========================================================================== */
+:root[data-theme="dark"] {
+    --bg-color: #0B0F14;
+    --primary-color: #E10600; 
+    --accent-color: #FF2B2B; 
+    --warning-color: #FFD800; 
+    --secondary-bg: #1A1D24;
+    --text-color: #E6EDF3;
+    --retro-shadow: #000; 
+    --track-filter: invert(1) opacity(0.8) drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+    --track-filter-hover: invert(1) opacity(1) drop-shadow(0 0 15px var(--primary-color));
+    --driver-shadow: drop-shadow(0 10px 15px rgba(255, 255, 255, 0.15));
+    --tag-bg: linear-gradient(180deg, #2A2D34 0%, #1A1D24 100%);
+    --tag-text: #E6EDF3;
+    --tag-border: rgba(255, 255, 255, 0.1);
+
+    --board-bg: rgba(0, 0, 0, 0.15);
+    --progress-bg: rgba(0, 0, 0, 0.5);
+    --progress-shadow: rgba(0, 0, 0, 0.8);
+}
+
+:root[data-theme="light"] {
+    --bg-color: #F0F4F8;
+    --primary-color: #D20000; 
+    --accent-color: #FF1E1E;
+    --warning-color: #FFC107;
+    --secondary-bg: #FFFFFF;
+    --text-color: #1A202C;
+    --retro-shadow: rgba(0,0,0,0.5); 
+    --track-filter: invert(0) opacity(0.8) drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+    --track-filter-hover: invert(0) opacity(1) drop-shadow(0 0 15px var(--primary-color));
+    --driver-shadow: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+    --tag-bg: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 100%);
+    --tag-text: #1A202C;
+    --tag-border: rgba(0, 0, 0, 0.15);
+
+    --board-bg: rgba(0, 0, 0, 0.05);
+    --progress-bg: rgba(0, 0, 0, 0.08);
+    --progress-shadow: rgba(0, 0, 0, 0.15);
+}
+
+:root[data-theme="light"] .flag-ind.white {
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0; padding: 0; overflow: hidden; 
+}
+
+.f1-font {
+    font-family: 'Titillium Web', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   2. ANA KAPSAYICI VE ÜST KONTROLLER (TEMA & DİL)
+   ========================================================================== */
+.telemetria-container {
+    width: 100%; height: 100vh; 
+    display: flex; flex-direction: column; align-items: center;
+    padding: 30px 30px 0 30px; box-sizing: border-box;
+    position: relative; overflow: hidden; 
+}
+
+.absolute-controls {
+    position: absolute; top: 30px; right: 40px;
+    display: flex; align-items: center; gap: 25px; z-index: 100;
+}
+
+.theme-switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--secondary-bg); transition: .4s; border-radius: 34px;
+    border: 1px solid rgba(128, 128, 128, 0.3); display: flex; justify-content: space-between;
+    align-items: center; padding: 0 6px; box-sizing: border-box;
+}
+.slider-icons { color: var(--primary-color); font-size: 14px; opacity: 0.6; transition: 0.3s; }
+.slider:before {
+    position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 3px;
+    background-color: var(--primary-color); transition: .4s; border-radius: 50%; z-index: 2;
+}
+input:checked + .slider { background-color: #E6EDF3; }
+input:checked + .slider:before { transform: translateX(24px); background-color: #D20000; }
+
+.lang-flags { display: flex; gap: 12px; align-items: center; }
+.lang-flags img {
+    width: 32px; height: auto; cursor: pointer; opacity: 0.3;
+    transition: all 0.3s ease; border-radius: 3px; border: 2px solid transparent; 
+}
+.lang-flags img:hover { opacity: 0.7; transform: translateY(-2px); }
+.lang-flags img.active { opacity: 1; transform: scale(1.1); border-color: var(--primary-color); }
+
+/* ==========================================================================
+   3. GİRİŞ EKRANI (MOD SEÇİMİ)
+   ========================================================================== */
+#homeScreenWrapper {
+    width: 100%; display: flex; flex-direction: column; align-items: center;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+}
+
+.main-logo-container { margin-top: 20px; margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.logo-placeholder {
+    width: 400px; height: 180px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    font-size: 20px; opacity: 0.8; transition: all 0.3s;
+}
+.pixel-icons { color: var(--text-color); opacity: 0.3; font-size: 32px; display: flex; gap: 20px; }
+
+.wizard-flex-container {
+    display: flex; justify-content: center; align-items: flex-start;
+    flex-grow: 1; gap: 50px; position: relative; width: 100%; max-width: 900px;
+}
+.mode-selection-text-block { display: flex; justify-content: center; align-items: center; flex-shrink: 0; width: 350px; height: 250px; }
+#retroModeText { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.card-grid { display: flex; gap: 25px; }
+.mode-card {
+    background-color: var(--secondary-bg); width: 200px; height: 280px;
+    border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    cursor: pointer; border: 2px solid transparent; transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 15px; box-sizing: border-box;
+}
+.mode-card:hover { border-color: var(--primary-color); transform: translateY(-10px); box-shadow: 0 15px 40px rgba(225, 6, 0, 0.2); }
+.mode-card.disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
+.mode-card.disabled:hover { border-color: transparent; transform: none; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.mode-icon-svg { width: 90px; height: auto; }
+.mode-title { font-size: 18px; font-weight: bold; margin-top: 15px; color: var(--text-color); text-align: center; }
+.mode-subtitle { font-size: 12px; color: var(--primary-color); margin-top: 6px; text-align: center; }
+
+/* ==========================================================================
+   4. NAVİGASYON & DİNAMİK SEÇİM ALANLARI (YILLAR, YARIŞLAR, PİLOTLAR)
+   ========================================================================== */
+.breadcrumb {
+    display: none; align-items: center; font-size: 18px; font-weight: 600;
+    color: var(--text-color); margin-top: 10px; margin-bottom: 25px; gap: 10px;
+    opacity: 0.8; width: 100%; max-width: 1450px; justify-content: flex-start; flex-shrink: 0; 
+}
+.breadcrumb span { cursor: pointer; transition: color 0.2s; }
+.breadcrumb span:hover { color: var(--primary-color); }
+.breadcrumb .separator { color: var(--primary-color); cursor: default; }
+.breadcrumb .active-crumb { color: var(--primary-color); cursor: default; }
+
+#dynamicContentArea {
+    display: none; flex: 1; width: 100%; max-width: 1450px; justify-content: center;
+    align-content: flex-start; flex-wrap: wrap; gap: 20px; padding: 40px 10px 80px 10px; 
+    box-sizing: border-box; overflow-y: auto; overflow-x: hidden;
+}
+
+.year-card, .race-card {
+    background-color: var(--secondary-bg); border-radius: 12px; cursor: pointer;
+    border: 2px solid transparent; box-shadow: 0 10px 30px rgba(0,0,0,0.2); box-sizing: border-box;
+    opacity: 0; transform: translateX(100vw) skewX(-15deg); 
+    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.year-card { width: 150px; height: 200px; display: flex; justify-content: center; align-items: center; }
+.race-card { width: 240px; height: 320px; display: flex; flex-direction: column; align-items: center; padding: 20px; position: relative; }
+
+.year-card.animate-in, .race-card.animate-in { opacity: 1; transform: translateX(0) skewX(0); }
+.year-card.animate-out, .race-card.animate-out { opacity: 0; transform: translateX(-100vw) skewX(15deg); }
+.year-card.animate-in:hover, .race-card.animate-in:hover {
+    border-color: var(--primary-color); transform: scale(1.05) translateY(-10px) !important;
+    box-shadow: 0 15px 40px rgba(225, 6, 0, 0.25); transition-delay: 0s !important; 
+}
+
+.year-text { font-size: 48px; color: var(--text-color); letter-spacing: 2px; }
+.race-round { position: absolute; top: 10px; left: 12px; font-size: 22px; color: var(--text-color); opacity: 0.15; }
+.race-title { font-size: 20px; color: var(--text-color); text-align: center; margin-top: 25px; line-height: 1.1; height: 50px; display: flex; align-items: center; justify-content: center; }
+.race-track-silhouette { width: 85%; height: 100px; object-fit: contain; margin: 15px 0; filter: var(--track-filter); transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
+.race-card.animate-in:hover .race-track-silhouette { transform: scale(1.1); filter: var(--track-filter-hover); }
+.race-details { margin-top: auto; text-align: center; width: 100%; }
+.race-location { font-size: 14px; color: var(--text-color); font-weight: 600; margin-bottom: 5px; }
+.race-date { font-size: 12px; color: var(--primary-color); font-weight: bold; letter-spacing: 1px; }
+
+/* Oturum Bento Box */
+.session-bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; width: 100%; max-width: 900px; margin: 0 auto; }
+.session-card {
+    background-color: var(--secondary-bg); border-radius: 12px; cursor: pointer; border: 2px solid transparent;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center;
+    align-items: center; padding: 20px; text-align: center; position: relative; opacity: 0;
+    transform: translateX(100vw) skewX(-15deg); transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+.session-card.main-event { grid-column: span 3; height: 220px; }
+.session-card.sub-event { grid-column: span 2; height: 150px; }
+.session-card.animate-in { opacity: 1; transform: translateX(0) skewX(0); }
+.session-card.animate-out { opacity: 0; transform: translateX(-100vw) skewX(15deg); }
+.session-card.animate-in:hover { border-color: var(--primary-color); transform: scale(1.05) translateY(-5px) !important; box-shadow: 0 15px 40px rgba(225, 6, 0, 0.25); background-color: rgba(225, 6, 0, 0.05); transition-delay: 0s !important; }
+.session-name { font-size: 24px; color: var(--text-color); margin-bottom: 10px; }
+.sub-event .session-name { font-size: 18px; }
+.session-date { font-size: 14px; color: var(--primary-color); font-weight: bold; }
+
+/* Pilot Kartları */
+.driver-tag { position: absolute; top: 15px; left: 15px; display: flex; background-color: transparent; border: 1px solid var(--tag-border); border-radius: 6px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.4); z-index: 10; }
+.driver-color-bar { width: 12px; }
+.driver-code-text { color: var(--tag-text); padding: 4px 10px; font-size: 22px; font-weight: 900; letter-spacing: 1px; background: var(--tag-bg); }
+.driver-image { width: 85%; height: 180px; object-fit: contain; margin-top: 30px; filter: var(--driver-shadow); transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
+.race-card.animate-in:hover .driver-image { transform: scale(1.15) translateY(-10px); }
+.driver-name { font-size: 18px; color: var(--text-color); font-weight: 800; margin-bottom: 5px; }
+
+@keyframes panZoomOut {
+    0% { transform: scale(1) translateZ(0); opacity: 1; filter: blur(0px); }
+    100% { transform: scale(3) translateZ(0); opacity: 0; filter: blur(10px); }
+}
+.animate-pan-zoom-out { animation: panZoomOut 0.8s cubic-bezier(0.7, 0, 0.3, 1) both; pointer-events: none; }
+
+/* ==========================================================================
+   5. TELEMETRİ GÖSTERGE PANELİ (ANA YAPI)
+   ========================================================================== */
+.telemetry-dashboard-wrapper {
+    display: none; width: 100%; height: calc(100vh - 130px); opacity: 0; transform: scale(0.9); 
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    flex-direction: column; gap: 20px; padding: 0 20px 20px 20px; box-sizing: border-box; overflow: hidden; 
+}
+.telemetry-dashboard-wrapper.active { display: flex; opacity: 1; transform: scale(1); }
+
+.telemetry-layout {
+    display: flex; gap: 30px; width: 100%; height: 100%; align-items: flex-start; overflow: hidden; 
+}
+.telemetry-panel-left { flex: 0 0 550px; display: flex; flex-direction: column; gap: 15px; opacity: 0; transform: translateX(-50vw) skewX(15deg); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); height: 100%; }
+.telemetry-panel-right { flex: 1; display: flex; flex-direction: column; gap: 15px; opacity: 0; transform: translateX(50vw) skewX(-15deg); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); height: 100%; overflow-y: auto; padding-right: 15px; position: relative; }
+.telemetry-panel-left.animate-in, .telemetry-panel-right.animate-in { opacity: 1; transform: translateX(0) skewX(0); }
+
+/* Scrollbar Düzeni */
+.telemetry-panel-right::-webkit-scrollbar { width: 6px; }
+.telemetry-panel-right::-webkit-scrollbar-track { background: rgba(128, 128, 128, 0.1); border-radius: 10px; }
+.telemetry-panel-right::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
+.telemetry-panel-right::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
+
+/* ==========================================================================
+   6. PİST HARİTASI VE KONTROLLER (SOL PANEL)
+   ========================================================================== */
+.track-map-container {
+    flex: 1; min-height: 300px; width: 100%; background-color: var(--secondary-bg);
+    border: 1px solid var(--tag-border); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative; display: flex; justify-content: center; align-items: center; padding: 0; 
+    box-sizing: border-box; overflow: hidden; 
+}
+#trackCanvas { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 450px; height: 100%; max-height: 450px; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1)); }
+
+.floating-driver-tag {
+    position: absolute; display: flex; background-color: var(--bg-color); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.4); z-index: 100;
+    pointer-events: none; transform: translate(5px, -50%); transition: left 0.05s linear, top 0.05s linear; 
+}
+.floating-color-bar { width: 10px; }
+.floating-code-text { color: var(--tag-text); padding: 3px 8px; font-size: 16px; font-weight: 900; letter-spacing: 1px; background: var(--tag-bg); }
+
+.sim-controls-horizontal {
+    background: var(--secondary-bg); border: 1px solid var(--tag-border); border-radius: 12px;
+    padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); width: 100%; box-sizing: border-box;
+}
+.sim-buttons { display: flex; gap: 10px; }
+.icon-btn {
+    background-color: var(--primary-color); color: #FFF; border: none; border-radius: 6px;
+    width: 38px; height: 38px; display: flex; justify-content: center; align-items: center;
+    cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.2s, background-color 0.2s; font-size: 14px;
+}
+.icon-btn:hover { background-color: var(--accent-color); transform: translateY(-2px); }
+
+.sim-timer { color: var(--primary-color); font-size: 20px; font-weight: 900; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); text-align: center; }
+.sim-legend-horizontal { display: flex; flex-direction: row; align-items: center; flex: 1; gap: 15px; color: (--text-color); }
+.legend-bar { height: 8px; flex: 1; background: linear-gradient(to right, #FF0000 0%, #FFFF00 50%, #00FF00 100%); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; }
+
+/* ==========================================================================
+   7. DİNAMİK SEKTÖR BAŞLIĞI VE YATAY TUR ŞERİDİ (TIMING RIBBON)
+   ========================================================================== */
+.dynamic-sector-header {
+    display: flex; justify-content: space-between; align-items: center; background: var(--secondary-bg);
+    padding: 10px 15px; border-radius: 10px; border: 1px solid var(--tag-border); margin-bottom: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); min-height: 24px; flex-shrink: 0; color: var(--text-color);
+}
+.sector-times { display: flex; gap: 15px; font-size: 15px; }
+.sector-badge { padding: 4px 10px; border-radius: 6px; font-weight: 800; background: rgba(255,255,255,0.05); }
+.sector-badge.purple { color: #D500F9; border: 1px solid #D500F9; }
+.sector-badge.green { color: #00E676; border: 1px solid #00E676; }
+.sector-badge.yellow { color: #FFEA00; border: 1px solid rgba(255,234,0,0.3); }
+
+.tyre-info { display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 15px; color: var(--text-color); }
+.tyre-dot { width: 14px; height: 14px; border-radius: 50%; }
+.tyre-dot.soft { background: #FF1744; } .tyre-dot.medium { background: #FFEA00; }
+.tyre-dot.hard { background: #E6EDF3; border-right: 1px solid rgba(0,0,0,0.1); } .tyre-dot.intermediate { background: #00E676; } .tyre-dot.wet { background: #2979FF; }
+
+.timing-ribbon-container {
+    display: flex; overflow-x: auto; gap: 10px; padding-bottom: 8px; margin-bottom: 5px;
+    flex-shrink: 0; min-height: 65px; 
+}
+.timing-ribbon-container::-webkit-scrollbar { height: 6px; }
+.timing-ribbon-container::-webkit-scrollbar-track { background: rgba(128,128,128,0.1); border-radius: 10px; }
+.timing-ribbon-container::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
+
+.lap-card {
+    min-width: 90px; background: var(--secondary-bg); border: 1px solid var(--tag-border);
+    border-radius: 8px; padding: 8px; cursor: pointer; display: flex; flex-direction: column;
+    align-items: center; position: relative; overflow: hidden; transition: all 0.2s; flex-shrink: 0;
+}
+.lap-card:hover { background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+.lap-card.active { border-color: var(--primary-color); background: rgba(225, 6, 0, 0.1); }
+.lap-card.pb { border: 2.5px solid #D500F9; box-shadow: 0 0 15px rgba(213, 0, 249, 0.6); }
+
+.lap-num { font-size: 16px; font-weight: 900; margin-bottom: 2px; color: var(--text-color); }
+.lap-time-text { font-size: 13px; opacity: 0.9; color: var(--text-color); }
+
+.lap-tyre-line { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; }
+.lap-tyre-line.soft { background: #FF1744; } .lap-tyre-line.medium { background: #FFEA00; }
+.lap-tyre-line.hard { background: #E6EDF3; border-right: 1px solid rgba(0,0,0,0.1); } .lap-tyre-line.intermediate { background: #00E676; } .lap-tyre-line.wet { background: #2979FF; }
+.lap-tyre-line.unknown { background: #555555; }
+
+.charts-container {
+    flex: 1; display: flex; flex-direction: column; gap: 20px; height: 100%;
+}
+
+/* ==========================================================================
+   8. 5 KIRMIZI IŞIK YÜKLEME EKRANI (KESİN ÇÖZÜM - GLOBAL OVERLAY)
+   ========================================================================== */
+.f1-lights-overlay {
+    position: fixed !important;  
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh; 
+    background: rgba(11, 15, 20, 0.85); 
+    backdrop-filter: blur(8px);
+    z-index: 999999 !important; 
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 30px; opacity: 1; transition: opacity 0.5s ease;
+}
+.f1-lights-overlay.hidden { opacity: 0; pointer-events: none; }
+
+.gantry-container {
+    display: flex; gap: 15px; background: #111; padding: 15px 25px;
+    border-radius: 12px; border-top: 4px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.light-box { width: 40px; height: 40px; background: #000; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 2px solid #222; }
+.light-circle { width: 30px; height: 30px; border-radius: 50%; background-color: #330000; transition: background-color 0.1s, box-shadow 0.1s; }
+.light-circle.red-on { background-color: #FF1744; box-shadow: 0 0 20px #FF1744, 0 0 40px #FF1744; }
+.f1-lights-overlay.green-lights .light-circle { background-color: #00E676; box-shadow: 0 0 20px #00E676, 0 0 40px #00E676; }
+.loading-text { color: #E6EDF3; font-size: 24px; letter-spacing: 2px; animation: pulseText 1.5s infinite; }
+@keyframes pulseText { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+
+/* ==========================================================================
+   YENİ: VS KIYASLAMA BUTONU TASARIMI
+   ========================================================================== */
+.vs-btn {
+    background: linear-gradient(45deg, var(--primary-color), #D500F9); /* F1 Kırmızısından Mora geçiş */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(225, 6, 0, 0.4);
+    transition: transform 0.2s, filter 0.2s;
+    margin-left: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.vs-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+/* --- YENİ: İKİLİ LASTİK ÇİZGİSİ TASARIMI --- */
+.lap-tyre-line-split {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+    display: flex; flex-direction: column;
+}
+.tyre-half { flex: 1; width: 100%; }
+.tyre-half.top { border-bottom: 1px solid rgba(0,0,0,0.6); /* Aynı renk olsalar bile arayı ayırır */ }
+
+/* Renkleri her iki duruma (Tekli ve İkili) da uyumlu yaptık */
+.lap-tyre-line.soft, .tyre-half.soft { background: #FF1744; } 
+.lap-tyre-line.medium, .tyre-half.medium { background: #FFEA00; }
+.lap-tyre-line.hard, .tyre-half.hard { background: #E6EDF3; border-right: 1px solid rgba(0,0,0,0.1); } 
+.lap-tyre-line.intermediate, .tyre-half.intermediate { background: #00E676; } 
+.lap-tyre-line.wet, .tyre-half.wet { background: #2979FF; }
+.lap-tyre-line.unknown, .tyre-half.unknown { background: #555555; }
+
+
+/* ==========================================================================
+   ASSETTO CORSA: CANLI SİMÜLASYON ARAYÜZÜ (TEMA UYUMLU)
+   ========================================================================== */
+.ac-room-screen {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: none; flex-direction: column; justify-content: center; align-items: center;
+    background: var(--bg-color); z-index: 50;
+    opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.ac-room-screen.active { display: flex; opacity: 1; transform: translateY(0); }
+
+.room-control-box {
+    background: var(--secondary-bg); padding: 40px; border-radius: 12px;
+    border: 1px solid var(--tag-border); box-shadow: 0 10px 40px var(--retro-shadow);
+    display: flex; flex-direction: column; align-items: center; gap: 20px; width: 400px;
+}
+.room-control-box input {
+    width: 100%; padding: 15px; font-size: 24px; text-align: center; text-transform: uppercase;
+    background: var(--bg-color); color: var(--text-color); border: 2px solid var(--tag-border);
+    border-radius: 8px; outline: none; transition: border-color 0.3s; font-family: 'Titillium Web', sans-serif; font-weight: 900;
+}
+.room-control-box input:focus { border-color: var(--primary-color); box-shadow: 0 0 15px var(--primary-color); }
+.room-control-box button {
+    width: 100%; padding: 15px; font-size: 18px; font-weight: 900;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: white; border: none; border-radius: 8px; cursor: pointer; font-family: 'Titillium Web', sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s; display: flex; justify-content: center; align-items: center; gap: 10px;
+}
+.room-control-box button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px var(--primary-color); }
+
+/* --- COMPACT DASHBOARD EKRANI --- */
+.ac-dashboard-wrapper {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: none; flex-direction: column; padding: 15px; box-sizing: border-box;
+    background: var(--bg-color); z-index: 40; opacity: 0; transform: scale(1.02); transition: all 0.4s;
+}
+.ac-dashboard-wrapper.active { display: flex; opacity: 1; transform: scale(1); }
+
+/* Üst Bar */
+.ac-top-bar-compact {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: var(--secondary-bg);
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--tag-border);
+    margin-bottom: 10px;
+    box-sizing: border-box; 
+    padding-right: 180px; 
+    gap: 20px; 
+}
+.ac-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap; 
+}
+.ac-bar-center {
+    display: flex;
+    gap: 30px;
+    font-size: 18px;
+    color: var(--text-color);
+    opacity: 0.8;
+    flex-grow: 1; 
+    justify-content: center; 
+}
+.ac-bar-center .hl-text { color: var(--text-color); font-weight: 900; font-size: 20px; opacity: 1; }
+.vs-btn-small {
+    background: var(--primary-color);
+    color: #FFF;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Titillium Web', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap; 
+    transition: transform 0.1s;
+}
+.vs-btn-small:hover {
+    transform: scale(1.05); 
+}
+
+/* Ana Izgara (Dense) - YENİ GENİŞLİK AYARLARI */
+.ac-telemetry-grid-dense { display: grid; grid-template-columns: 320px 1fr 240px; gap: 15px; flex-grow: 1; }
+.ac-panel-dense {
+    background-color: var(--secondary-bg); border-radius: 8px; padding: 15px;
+    border: 1px solid var(--tag-border); display: flex; flex-direction: column; gap: 10px;
+}
+.ac-panel-title-small { font-size: 11px; color: var(--primary-color); font-weight: bold; letter-spacing: 2px; text-align: center; margin-bottom: 5px; }
+
+/* Mini Map & G-Force */
+.ac-mini-map-box { flex-grow: 1; background: var(--bg-color); border-radius: 6px; border: 1px solid var(--tag-border); display: flex; justify-content: center; align-items: center; overflow: hidden; }
+.ac-gforce-box { height: 120px; background: var(--bg-color); border-radius: 6px; border: 1px solid var(--tag-border); position: relative; overflow: hidden; }
+.gforce-crosshair { position: absolute; top: 50%; left: 0; right: 0; border-top: 1px solid var(--tag-border); height: 100%; width: 1px; border-left: 1px solid var(--tag-border); margin: 0 auto; transform: translateY(-50%); opacity: 0.5; }
+.gforce-dot { position: absolute; top: 50%; left: 50%; width: 12px; height: 12px; background: var(--primary-color); border-radius: 50%; transform: translate(-50%, -50%); transition: top 0.05s, left 0.05s; box-shadow: 0 0 10px var(--primary-color); }
+
+/* Merkez Çekirdek (RPM, Gear, Speed) */
+.ac-rpm-leds-compact { display: flex; gap: 4px; width: 100%; justify-content: center; margin-bottom: 20px; }
+.ac-led-c { flex: 1; height: 15px; background: var(--bg-color); border-radius: 2px; border: 1px solid var(--tag-border); }
+.ac-led-c.green.active { background: #00E676; box-shadow: 0 0 10px #00E676; }
+.ac-led-c.red.active { background: #FF1744; box-shadow: 0 0 10px #FF1744; }
+.ac-led-c.blue.active { background: #2979FF; box-shadow: 0 0 10px #2979FF; }
+
+.ac-core-data { display: flex; align-items: center; justify-content: center; gap: 30px; margin-top: 20px; }
+.ac-gear-display-dense { 
+    font-size: 120px; /* 160px'den 120px'e düşürdük, daha zarif duracak */
+    font-weight: 900; 
+    line-height: 0.9; 
+    color: var(--primary-color); 
+    text-shadow: 0 0 25px var(--primary-color); 
+    font-family: 'Titillium Web'; 
+    margin: 10px 0; /* Üstten ve alttan nefes boşluğu */
+}
+.ac-speed-cluster { 
+    display: flex; 
+    flex-direction: row; /* Alt alta (column) yerine yan yana (row) diziyoruz */
+    align-items: baseline; /* İkisini alt çizgilerinden (baseline) hizalar */
+    justify-content: center; /* Merkeze ortalar */
+    gap: 8px; /* Sayı ile km/h birimi arasına şık bir boşluk */
+    margin-bottom: 20px; /* Altındaki bilgi panosuna (Driver Info) çarpmaması için boşluk */
+}
+.ac-speed-val { 
+    font-size: 70px; /* 80'den 70'e düşürdük, vitesle uyumlu oldu */
+    font-weight: 900; 
+    line-height: 0.8; 
+    font-family: monospace; 
+    letter-spacing: -2px;
+    color: var(--text-color); 
+}
+
+.ac-speed-unit { 
+    font-size: 24px; 
+    color: var(--text-color); 
+    opacity: 0.6; 
+    font-weight: 800; 
+}
+/* Direksiyon ve Pedallar */
+.ac-steering-wheel { width: 100px; height: 100px; border: 4px solid var(--tag-border); border-radius: 50%; margin: 20px 0; position: relative; }
+.ac-steering-line { position: absolute; top: 10px; left: 46px; width: 4px; height: 40px; background: var(--warning-color); border-radius: 2px; transform-origin: center 40px; transition: transform 0.05s linear; }
+
+.ac-pedals-horizontal { display: flex; align-items: center; width: 100%; gap: 10px; margin-top: auto; }
+.pedal-h-label { font-size: 10px; font-weight: bold; color: var(--text-color); opacity: 0.7; width: 25px; }
+.pedal-h-bg { flex-grow: 1; height: 15px; background: var(--bg-color); border: 1px solid var(--tag-border); border-radius: 3px; position: relative; overflow: hidden; }
+.pedal-h-fill { height: 100%; width: 0%; position: absolute; top: 0; left: 0; transition: width 0.05s linear; }
+.pedal-h-fill.green { background: #00E676; } .pedal-h-fill.red { background: #FF1744; right: 0; left: auto; }
+
+/* Sağ Panel (Araç Sağlığı) */
+.ac-tyre-pro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
+.ac-tyre-pro { background: var(--bg-color); border: 1px solid var(--tag-border); border-radius: 6px; padding: 10px 0; text-align: center; color: var(--text-color); font-family: monospace; }
+.ac-tyre-pro span { font-size: 20px; font-weight: 900; }
+.ac-tyre-pro small { font-size: 11px; color: var(--text-color); opacity: 0.7; display: block; }
+
+.ac-matrix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; }
+.sys-led { background: var(--bg-color); border: 1px solid var(--tag-border); border-radius: 4px; padding: 8px; text-align: center; font-size: 12px; font-weight: 900; color: var(--text-color); transition: 0.1s; opacity: 0.4; }
+.sys-led.active { background: var(--primary-color); color: #FFF; border-color: var(--primary-color); box-shadow: 0 0 15px var(--primary-color); opacity: 1; }
+/* --- ORTA PANEL İKİYE BÖLÜNME (SPLIT CENTER) --- */
+.ac-center-left {
+    display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+    width: 45%; /* Sol taraf (Hız) biraz daha büyüdü */
+    background: var(--secondary-bg); padding: 20px; border-right: 1px solid var(--tag-border); box-sizing: border-box;
+}
+
+.ac-center-right {
+    position: relative;
+    width: 55%; /* Harita alanı daraltıldı */
+    background-color: transparent; display: flex; justify-content: center; align-items: center; overflow: hidden;
+}
+
+.ac-map-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1; /* En altta duracak */
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    transition: background-image 0.5s ease-in-out, filter 0.3s ease;
+}
+
+:root[data-theme="dark"] .ac-map-layer {
+    filter: invert(1) opacity(0.8) drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+
+:root[data-theme="light"] .ac-map-layer {
+    filter: invert(0) opacity(1) drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+.ac-center-right canvas {
+    width: 100%;
+    height: 100%;
+    /* Canvas'ın CSS boyutları ile çizim boyutlarını JS ile eşitleyeceğiz */
+}
+.map-legend {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: 'Titillium Web', sans-serif;
+}
+.map-legend-bar {
+    width: 80px;
+    height: 6px;
+    background: linear-gradient(to right, #FF1744, #FFEA00, #00E676);
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.ac-track-title {
+    position: absolute; top: 20px; left: 25px; font-size: 16px; font-weight: 900;
+    color: var(--primary-color); letter-spacing: 2px; font-family: 'Titillium Web', sans-serif;
+    text-shadow: 0 0 10px var(--retro-shadow); z-index: 10;
+}
+
+#acLiveMapCanvas {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5;
+}
+
+.leg-slow { color: #FF1744; font-weight: bold; } 
+.leg-fast { color: #00E676; font-weight: bold; }
+
+/* ==========================================================================
+   YENİ EKLENEN UI MODÜLLERİ (BAYRAK, G-FORCE, DİREKSİYON)
+   ========================================================================= */
+
+/* Bayrak Sistemi */
+.flag-ind { padding: 4px 12px; border-radius: 4px; font-weight: 900; font-size: 16px; letter-spacing: 1px; margin-left: 20px; transition: all 0.3s; }
+.flag-ind.none { background: transparent; color: var(--text-color); opacity: 0.3; }
+.flag-ind.yellow { background: #FFEA00; color: #000; box-shadow: 0 0 15px rgba(255, 234, 0, 0.6); }
+.flag-ind.blue { background: #2979FF; color: #FFF; box-shadow: 0 0 15px rgba(41, 121, 255, 0.6); }
+.flag-ind.green { background: #00E676; color: #000; box-shadow: 0 0 15px rgba(0, 230, 118, 0.6); }
+.flag-ind.white { background: #FFF; color: #000; box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
+.flag-ind.black { background: #000; color: #FF1744; border: 1px solid #FF1744; }
+.flag-ind.checkered { 
+    background: repeating-conic-gradient(#000 0 90deg, #fff 0 180deg) 0 0/12px 12px; 
+    color: #FF1744; text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF; 
+    border: 2px solid #FFF;
+}
+
+/* G-Force Sayısal Değerler */
+.gforce-vals { position: absolute; bottom: 5px; left: 0; width: 100%; text-align: center; font-size: 12px; opacity: 0.8; color: var(--text-color); }
+
+/* F1 Direksiyon Wrapper */
+.ac-steering-wrapper {
+    position: relative; /* Kapsayıcı, içindeki absolutet'e göre şekillensin */
+    width: 100px; height: 60px; /* SVG boyutuyla aynı */
+    display: flex; justify-content: center; align-items: center;
+}
+
+#acSteerVal {
+    position: absolute; /* Direksiyondan bağımsız, Wrapper'ın ortasına kitle */
+    top: 50%; left: 50%; transform: translate(-50%, -50%); /* Tam Merkeze Hizala */
+    z-index: 10; /* Direksiyon SVG'sinin üstünde dursun */
+    
+    font-size: 14px; /* Ekranın içine sığması için biraz küçülttük */
+    font-weight: 900; /* Kalın ve okunaklı */
+    color: var(--primary-color); /* Kırmızı renk */
+    margin: 0; padding: 0; /* Boşlukları sıfırla */
+    
+    /* Dönmeyi Devre Dışı Bırak: JavaScript SVG'yi döndürecek, burası sabit kalacak! */
+    transition: none !important; 
+    
+    /* Metin Gölgesi (Okunabilirliği arttırmak için) */
+    text-shadow: 0 0 5px rgba(225, 6, 0, 0.4);
+}
+
+/* ==========================================================================
+   PİLOT VE ZAMAN BİLGİ PANOSU
+   ========================================================================= */
+.ac-driver-info-board {
+    width: 100%;
+    margin-top: auto; /* Kendini otomatik olarak en alta (boşluğa) iter */
+    background: var(--board-bg);
+    border: 1px solid var(--tag-border);
+    border-radius: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+}
+.di-row { display: flex; justify-content: space-between; align-items: center; font-family: 'Titillium Web', sans-serif; }
+.di-label { font-size: 11px; color: var(--text-color); opacity: 0.6; font-weight: 800; letter-spacing: 1px; }
+.di-val { font-size: 14px; color: var(--text-color); font-weight: 900; text-align: right; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px; }
+.di-val.time-text { font-family: monospace; font-size: 17px; letter-spacing: -0.5px; opacity: 0.9; }
+.di-divider { height: 1px; background: var(--tag-border); margin: 4px 0; opacity: 0.3; }
+
+/* ==========================================================================
+   LEADERBOARD (SOL PANEL ORTASI)
+   ========================================================================= */
+.ac-lb-container { margin-top: 15px; border-top: 1px solid var(--tag-border); padding-top: 10px; width: 100%; box-sizing: border-box; }
+.ac-lb-title { font-size: 11px; color: var(--primary-color); font-weight: bold; letter-spacing: 2px; text-align: center; margin-bottom: 8px; }
+.ac-lb-row { display: flex; align-items: center; justify-content: space-between; font-family: 'Titillium Web', sans-serif; padding: 4px 6px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.ac-lb-row.is-player { background: rgba(225, 6, 0, 0.15); border-radius: 4px; border-bottom: none; box-shadow: 0 0 10px rgba(225,6,0,0.2); }
+.ac-lb-pos { width: 22px; font-size: 14px; font-weight: 900; color: var(--text-color); }
+.ac-lb-name { flex-grow: 1; font-size: 14px; font-weight: 800; color: var(--text-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px; text-transform: uppercase; }
+.ac-lb-delta { font-size: 12px; font-weight: 600; color: var(--warning-color); text-align: right; width: 55px; }
+.ac-lb-time { font-size: 13px; font-weight: 900; color: var(--text-color); text-align: right; width: 65px; }
+.ac-lb-time.fastest { color: #D500F9; text-shadow: 0 0 8px rgba(213,0,249,0.5); }
+
+/* ==========================================================================
+   GARAJ MODU (GARAGE OVERLAY) & CASCADING ANİMASYONLAR
+   ========================================================================== */
+.ac-garage-overlay {
+    position: absolute;
+    top: 15px; left: 15px; right: 15px; bottom: 15px; /* YENİ: top 60px yerine 15px oldu, üst barı da kaplayacak! */
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    background: rgba(11, 15, 20, 0.75);
+    border-radius: 8px;
+    z-index: 100;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    backdrop-filter: blur(8px);
+}
+:root[data-theme="light"] .ac-garage-overlay {
+    background: rgba(240, 244, 248, 0.75);
+}
+.ac-garage-overlay.active {
+    opacity: 1; pointer-events: all;
+}
+
+/* YENİ: Tüm Ekran Blur Efekti Kapsayıcısı */
+.ac-content-wrapper {
+    display: flex; flex-direction: column; flex-grow: 1; width: 100%; height: 100%;
+    transition: filter 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+}
+.ac-content-wrapper.garage-blur {
+    filter: blur(12px) grayscale(30%);
+    opacity: 0.4;
+    transform: scale(0.98);
+    pointer-events: none;
+}
+
+/* Ana Grid (Blur animasyonu silindi, sadece grid özellikleri kaldı) */
+.ac-telemetry-grid-dense {
+    display: grid; grid-template-columns: 320px 1fr 240px; gap: 15px; flex-grow: 1;
+}
+
+/* Fırlayarak Gelme (Pop-Up) Şelale Animasyonu */
+@keyframes panelCascadeIn {
+    0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.cascade-animate {
+    animation: panelCascadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

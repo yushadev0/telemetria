@@ -1,0 +1,3 @@
+TelemetriaClient.exe: 000040A0: 21:46:12 [127.0.0.1]:Failed Sequence Recovery: SeqId: 15, Event: LoadTelemetryEvent
+TelemetriaClient.exe: 000040A0: 21:46:14 [127.0.0.1]:Sequence sent from cache:  SeqId: 15
+TelemetriaClient.exe: 000040A0: 21:46:14 [127.0.0.1]:Processed: Id: 15, Evt: LoadTelemetryEvent, [qdElgNtx12112D7A881]

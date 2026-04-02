@@ -1,0 +1,53 @@
+TelemetriaClient.exe: 00001F50: 12:46:47 []:>--------------------------------------------------------------<
+TelemetriaClient.exe: 00001F50: 12:46:47 [TUniServerModule]:Server First Init.
+TelemetriaClient.exe: 00001F50: 12:46:47 [TUniServerModule]:Start Path = C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\
+TelemetriaClient.exe: 00001F50: 12:46:47 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+TelemetriaClient.exe: 00001F50: 12:46:47 [TUniServerModule]:HTTP Server Started on Port: 8077
+TelemetriaClient.exe: 0000255C: 12:47:23 []:>--------------------------------------------------------------<
+TelemetriaClient.exe: 0000255C: 12:47:23 [TUniServerModule]:Server First Init.
+TelemetriaClient.exe: 0000255C: 12:47:23 [TUniServerModule]:Start Path = C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\
+TelemetriaClient.exe: 0000255C: 12:47:23 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+TelemetriaClient.exe: 0000255C: 12:47:23 [InitWebServer]:EIdCouldNotBindSocket : Could not bind socket. : Addr: $00532B07
+TelemetriaClient.exe: 0000255C: 12:47:27 [TUniServerModule]:Shutting Down Server.
+TelemetriaClient.exe: 0000255C: 12:47:27 [TUniServerModule]:Stopping HTTP Server.
+TelemetriaClient.exe: 0000255C: 12:47:28 [TUniServerModule]:HTTP Server Stopped.
+TelemetriaClient.exe: 0000255C: 12:47:28 [TUniGUISessionManager]:Terminating Session manager.
+TelemetriaClient.exe: 0000255C: 12:47:28 [TUniGUISessionManager]:Stopping Cache Eraser...
+TelemetriaClient.exe: 0000255C: 12:47:28 [TUniGUISessionManager]:Cache Eraser Stopped.
+TelemetriaClient.exe: 0000255C: 12:47:28 [TUniGUISessionManager]:Destroying Worker Threads.
+TelemetriaClient.exe: 0000255C: 12:47:28 [TUniGUISessionManager]:Session manager terminated.
+TelemetriaClient.exe: 0000255C: 12:47:28 [TUniWebSocketStack]:Terminating...
+TelemetriaClient.exe: 0000255C: 12:47:28 [TUniGUIMessageQ]:Terminated.
+TelemetriaClient.exe: 0000255C: 12:47:28 [TUniWebSocketStack]:Terminated.
+TelemetriaClient.exe: 0000255C: 12:47:28 [TUniServerModule]:Server Shutdown Completed.
+TelemetriaClient.exe: 0000255C: 12:47:28 []:<-------------------------------------------------------------->
+TelemetriaClient.exe: 000049D4: 13:23:15 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: nJ6TyCW5vS112D59395 ) : Addr: $0064BC3F
+TelemetriaClient.exe: 0000017C: 13:55:16 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: QA1yxqLnYQ112D59E44 ) : Addr: $0064BC3F
+TelemetriaClient.exe: 0000017C: 13:55:16 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: QA1yxqLnYQ112D59E44 ) : Addr: $0064BC3F
+TelemetriaClient.exe: 000024A8: 14:19:21 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 92ltlCJKni112D5A497 ) : Addr: $0064BC3F
+TelemetriaClient.exe: 00003274: 14:38:34 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: ctRjleKExT112D5A93E ) : Addr: $0064BC3F
+TelemetriaClient.exe: 00003274: 14:38:34 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 0000561C: 14:38:39 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\favicon.ico
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniServerModule]:Shutting Down Server.
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniServerModule]:Stopping HTTP Server.
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniServerModule]:HTTP Server Stopped.
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniGUISessionManager]:Terminating Session manager.
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniGUISessionManager]:Stopping Cache Eraser...
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniGUISessionManager]:Cache Eraser Stopped.
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniGUISessionManager]:Destroying Worker Threads.
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniGUISessionManager]:Session manager terminated.
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniWebSocketStack]:Terminating...
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniGUIMessageQ]:Terminated.
+TelemetriaClient.exe: 00001F50: 15:35:01 [TUniWebSocketStack]:Terminated.
+TelemetriaClient.exe: 00001F50: 15:35:02 [TUniServerModule]:Server Shutdown Completed.
+TelemetriaClient.exe: 00001F50: 15:35:02 []:<-------------------------------------------------------------->
+TelemetriaClient.exe: 00000B8C: 15:35:07 []:>--------------------------------------------------------------<
+TelemetriaClient.exe: 00000B8C: 15:35:07 [TUniServerModule]:Server First Init.
+TelemetriaClient.exe: 00000B8C: 15:35:07 [TUniServerModule]:Start Path = C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\
+TelemetriaClient.exe: 00000B8C: 15:35:07 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+TelemetriaClient.exe: 00000B8C: 15:35:07 [TUniServerModule]:HTTP Server Started on Port: 8077
+TelemetriaClient.exe: 0000289C: 15:35:08 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: DSOgILStIY112D5AEDF ) : Addr: $005EBC3F
+TelemetriaClient.exe: 00006044: 15:52:31 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: TZUxJNnmqL112D5BDCC ) : Addr: $005EBC3F
+TelemetriaClient.exe: 00006044: 15:52:31 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: TZUxJNnmqL112D5BDCC ) : Addr: $005EBC3F
+TelemetriaClient.exe: 00006670: 16:32:16 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Gyo2JQQWao112D5C284 ) : Addr: $005EBC3F
+TelemetriaClient.exe: 00000B8C: 16:39:21 [Exit]:Unexpected attempt to terminate server application with Exit Code: 0

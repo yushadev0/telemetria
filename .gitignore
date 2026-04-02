@@ -28,14 +28,6 @@
 *.projdata
 *.cgl
 
-# Delphi Çıktı ve Yedek Klasörleri (Derleme Klasörleri)
-Win32/
-Win64/
-__history/
-__recovery/
-Debug/
-Release/
-
 # VS Code / Cursor / Diğer Editörler
 .vscode/
 .idea/

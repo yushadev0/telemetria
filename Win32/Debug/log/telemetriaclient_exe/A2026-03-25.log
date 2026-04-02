@@ -1,0 +1,91 @@
+TelemetriaClient.exe: 00000980: 14:25:12 []:>--------------------------------------------------------------<
+TelemetriaClient.exe: 00000980: 14:25:12 [TUniServerModule]:Server First Init.
+TelemetriaClient.exe: 00000980: 14:25:12 [TUniServerModule]:Start Path = C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\
+TelemetriaClient.exe: 00000980: 14:25:12 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+TelemetriaClient.exe: 00000980: 14:25:12 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+TelemetriaClient.exe: 00000980: 14:25:12 [TUniServerModule]:HTTP Server Started on Port: 8077
+TelemetriaClient.exe: 00005970: 14:37:31 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00002078: 14:50:23 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00000980: 16:18:51 [TUniServerModule]:Shutting Down Server.
+TelemetriaClient.exe: 00000980: 16:18:51 [TUniServerModule]:Stopping HTTP Server.
+TelemetriaClient.exe: 00000980: 16:18:52 [TUniServerModule]:HTTP Server Stopped.
+TelemetriaClient.exe: 00000980: 16:18:52 [TUniGUISessionManager]:Terminating Session manager.
+TelemetriaClient.exe: 00000980: 16:18:52 [TUniGUISessionManager]:Stopping Cache Eraser...
+TelemetriaClient.exe: 00000980: 16:18:52 [TUniGUISessionManager]:Cache Eraser Stopped.
+TelemetriaClient.exe: 00000980: 16:18:52 [TUniGUISessionManager]:Destroying Worker Threads.
+TelemetriaClient.exe: 00000980: 16:18:52 [TUniGUISessionManager]:Session manager terminated.
+TelemetriaClient.exe: 00000980: 16:18:52 [TUniWebSocketStack]:Terminating...
+TelemetriaClient.exe: 00000980: 16:18:52 [TUniGUIMessageQ]:Terminated.
+TelemetriaClient.exe: 00000980: 16:18:52 [TUniWebSocketStack]:Terminated.
+TelemetriaClient.exe: 00000980: 16:18:52 [TUniServerModule]:Server Shutdown Completed.
+TelemetriaClient.exe: 00000980: 16:18:52 []:<-------------------------------------------------------------->
+TelemetriaClient.exe: 00004998: 16:18:56 []:>--------------------------------------------------------------<
+TelemetriaClient.exe: 00004998: 16:18:56 [TUniServerModule]:Server First Init.
+TelemetriaClient.exe: 00004998: 16:18:56 [TUniServerModule]:Start Path = C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\
+TelemetriaClient.exe: 00004998: 16:18:56 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+TelemetriaClient.exe: 00004998: 16:18:56 [TUniServerModule]:HTTP Server Started on Port: 8077
+TelemetriaClient.exe: 0000253C: 16:19:00 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: uekUuY5Xdq112D12DD5 ) : Addr: $0131BC3F
+TelemetriaClient.exe: 0000253C: 16:19:00 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: uekUuY5Xdq112D12DD5 ) : Addr: $0131BC3F
+TelemetriaClient.exe: 00003670: 16:31:27 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00004920: 16:53:00 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00004998: 17:09:22 [TUniServerModule]:Shutting Down Server.
+TelemetriaClient.exe: 00004998: 17:09:22 [TUniServerModule]:Stopping HTTP Server.
+TelemetriaClient.exe: 00004998: 17:09:23 [TUniServerModule]:HTTP Server Stopped.
+TelemetriaClient.exe: 00004998: 17:09:23 [TUniGUISessionManager]:Terminating Session manager.
+TelemetriaClient.exe: 00004998: 17:09:23 [TUniGUISessionManager]:Stopping Cache Eraser...
+TelemetriaClient.exe: 00004998: 17:09:23 [TUniGUISessionManager]:Cache Eraser Stopped.
+TelemetriaClient.exe: 00004998: 17:09:23 [TUniGUISessionManager]:Destroying Worker Threads.
+TelemetriaClient.exe: 00004998: 17:09:23 [TUniGUISessionManager]:Session manager terminated.
+TelemetriaClient.exe: 00004998: 17:09:23 [TUniWebSocketStack]:Terminating...
+TelemetriaClient.exe: 00004998: 17:09:23 [TUniGUIMessageQ]:Terminated.
+TelemetriaClient.exe: 00004998: 17:09:23 [TUniWebSocketStack]:Terminated.
+TelemetriaClient.exe: 00004998: 17:09:23 [TUniServerModule]:Server Shutdown Completed.
+TelemetriaClient.exe: 00004998: 17:09:23 []:<-------------------------------------------------------------->
+TelemetriaClient.exe: 00002568: 21:59:51 []:>--------------------------------------------------------------<
+TelemetriaClient.exe: 00002568: 21:59:51 [TUniServerModule]:Server First Init.
+TelemetriaClient.exe: 00002568: 21:59:51 [TUniServerModule]:Start Path = C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\
+TelemetriaClient.exe: 00002568: 21:59:51 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+TelemetriaClient.exe: 00002568: 21:59:51 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+TelemetriaClient.exe: 00002568: 21:59:51 [TUniServerModule]:HTTP Server Started on Port: 8077
+TelemetriaClient.exe: 00005578: 22:03:17 [127.0.0.1]:ENetHTTPClientException : Error sending data: (12029) Sunucuyla bağlantı kurulamadı : Addr: $00C9138C
+TelemetriaClient.exe: 00005578: 22:03:23 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00005964: 22:03:45 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00002568: 22:04:28 [TUniServerModule]:Shutting Down Server.
+TelemetriaClient.exe: 00002568: 22:04:28 [TUniServerModule]:Stopping HTTP Server.
+TelemetriaClient.exe: 00002568: 22:04:29 [TUniServerModule]:HTTP Server Stopped.
+TelemetriaClient.exe: 00002568: 22:04:29 [TUniGUISessionManager]:Terminating Session manager.
+TelemetriaClient.exe: 00002568: 22:04:29 [TUniGUISessionManager]:Stopping Cache Eraser...
+TelemetriaClient.exe: 00002568: 22:04:29 [TUniGUISessionManager]:Cache Eraser Stopped.
+TelemetriaClient.exe: 00002568: 22:04:29 [TUniGUISessionManager]:Destroying Worker Threads.
+TelemetriaClient.exe: 00002568: 22:04:29 [TUniGUISessionManager]:Session manager terminated.
+TelemetriaClient.exe: 00002568: 22:04:29 [TUniWebSocketStack]:Terminating...
+TelemetriaClient.exe: 00002568: 22:04:29 [TUniGUIMessageQ]:Terminated.
+TelemetriaClient.exe: 00002568: 22:04:29 [TUniWebSocketStack]:Terminated.
+TelemetriaClient.exe: 00002568: 22:04:29 [TUniServerModule]:Server Shutdown Completed.
+TelemetriaClient.exe: 00002568: 22:04:29 []:<-------------------------------------------------------------->
+TelemetriaClient.exe: 00002AD8: 22:04:32 []:>--------------------------------------------------------------<
+TelemetriaClient.exe: 00002AD8: 22:04:32 [TUniServerModule]:Server First Init.
+TelemetriaClient.exe: 00002AD8: 22:04:32 [TUniServerModule]:Start Path = C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\
+TelemetriaClient.exe: 00002AD8: 22:04:32 [TUniGUISessionManager]:Cache erase job created, Folder count: [1]
+TelemetriaClient.exe: 00002AD8: 22:04:32 [TUniServerModule]:Starting HTTP Server on Port: 8077...
+TelemetriaClient.exe: 00002AD8: 22:04:32 [TUniServerModule]:HTTP Server Started on Port: 8077
+TelemetriaClient.exe: 00002618: 22:04:33 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 8s1QiJVXAw112D192FC ) : Addr: $00A8BC3F
+TelemetriaClient.exe: 000036B8: 22:11:23 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00003AF8: 22:11:24 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00000708: 22:26:25 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: TEzID21npT112D196A9 ) : Addr: $00A8BC3F
+TelemetriaClient.exe: 00003674: 22:39:34 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: 3oKPFSE2dW112D1997E ) : Addr: $00A8BC3F
+TelemetriaClient.exe: 00005488: 22:47:23 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00005960: 22:48:56 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00005688: 22:49:42 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 000033AC: 22:52:40 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00002B3C: 22:54:43 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 0000475C: 22:57:40 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 000046C0: 23:06:25 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00004188: 23:17:34 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 0000148C: 23:18:31 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00005838: 23:19:21 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00005870: 23:37:23 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 0000350C: 23:37:33 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json
+TelemetriaClient.exe: 00004A28: 23:49:47 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Ay1CcMxfNO112D1ABD2 ) : Addr: $00A8BC3F
+TelemetriaClient.exe: 00003920: 23:49:47 [127.0.0.1]:EUniSessionException : Invalid session or session Timeout. (Session not found: Ay1CcMxfNO112D1ABD2 ) : Addr: $00A8BC3F
+TelemetriaClient.exe: 00004A28: 23:50:13 [HandleFileRequest[127.0.0.1]]:File not found: C:\yusag\PROJECTS\telemetria\telemetria-client\Win32\Debug\.well-known\appspecific\com.chrome.devtools.json

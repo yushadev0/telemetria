@@ -1,0 +1,229 @@
+<div class="telemetria-container">
+  <div class="absolute-controls">
+    <label class="theme-switch" title="Tema Değiştir">
+      <input type="checkbox" id="themeToggle" onchange="window.toggleTheme(this)">
+      <span class="slider">
+          <i class="fa-solid fa-sun slider-icons"></i>
+          <i class="fa-solid fa-moon slider-icons"></i>
+      </span>
+    </label>
+    <div class="lang-flags">
+      <img src="https://flagcdn.com/w40/tr.png" alt="TR" id="flag-tr" onclick="window.setLanguage('tr')">
+      <img src="https://flagcdn.com/w40/gb.png" alt="EN" id="flag-en" onclick="window.setLanguage('en')">
+    </div>
+  </div>
+
+  <div id="homeScreenWrapper">
+    <div class="main-logo-container">
+      <img src="https://hasup.net/uni/telemetria/files/main.png" alt="main logo">
+      <div class="pixel-icons">
+          <i class="fa-solid fa-car-formula"></i>
+      </div>
+    </div>
+
+    <div class="wizard-flex-container" id="modeSelectionContainer">
+      <div class="mode-selection-text-block">
+          <img id="retroModeText" src="https://hasup.net/assets/telemetria_text_tr.png">
+      </div>
+
+      <div class="card-grid" id="mainCardGrid">
+        <div class="mode-card" onclick="window.selectMode('F1')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="120px" height="30px" viewBox="0 0 120 30" class="mode-icon-svg">
+              <path fill="var(--primary-color)" d="M101.086812,30 L101.711812,30 L101.711812,27.106875 L101.722437,27.106875 L102.761812,30 L103.302437,30 L104.341812,27.106875 L104.352437,27.106875 L104.352437,30 L104.977437,30 L104.977437,26.25125 L104.063687,26.25125 L103.055562,29.18625 L103.044937,29.18625 L102.011187,26.25125 L101.086812,26.25125 L101.086812,30 Z M97.6274375,26.818125 L98.8136875,26.818125 L98.8136875,30 L99.4699375,30 L99.4699375,26.818125 L100.661812,26.818125 L100.661812,26.25125 L97.6274375,26.25125 L97.6274375,26.818125 Z M89.9999375,30 L119.999937,0 L101.943687,0 L71.9443125,30 L89.9999375,30 Z M85.6986875,13.065 L49.3818125,13.065 C38.3136875,13.065 36.3768125,13.651875 31.6361875,18.3925 C27.2024375,22.82625 20.0005625,30 20.0005625,30 L35.7324375,30 L39.4855625,26.246875 C41.9530625,23.779375 43.2255625,23.52375 48.4068125,23.52375 L75.2405625,23.52375 L85.6986875,13.065 Z M31.1518125,16.253125 C27.8774375,19.3425 20.7530625,26.263125 16.9130625,30 L-6.25e-05,30 C-6.25e-05,30 13.5524375,16.486875 21.0849375,9.0725 C28.8455625,1.685 32.7143125,0 46.9486875,0 L98.7643125,0 L87.5449375,11.21875 L48.0011875,11.21875 C37.9993125,11.21875 35.7518125,11.911875 31.1518125,16.253125 Z"></path>
+          </svg>
+          <div class="mode-title" data-i18n="f1_mode">Formula 1</div>
+          <div class="mode-subtitle" data-i18n="live_telemetry">Canlı Telemetri API</div>
+        </div>
+        <div class="mode-card" onclick="window.selectMode('AC')">
+           <img src="//assettocorsa.shop/cdn/shop/t/28/assets/ac-logo-blackred.svg?v=15125274779513952751737637513" style="width: 120px; height: 50px;">
+          <div class="mode-title" data-i18n="ac_mode">Assetto Corsa</div>
+          <div class="mode-subtitle" data-i18n="coming_soon">Assetto Corsa için Canlı Yarış Mühendisi Simülasyonu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="breadcrumb" id="navBreadcrumb"></div>
+  
+  <div id="dynamicContentArea"></div>
+
+  <div id="telemetryDashboard" class="telemetry-dashboard-wrapper"></div>
+
+<div id="acRoomScreen" class="ac-room-screen">
+      <button class="icon-btn" style="position: absolute; top: 30px; left: 30px; width: 50px; height: 50px; font-size: 20px;" onclick="window.acBackToHome()"><i class="fa-solid fa-arrow-left"></i></button>
+      
+      <div class="logo-placeholder" style="margin-bottom: 40px;">
+        <img id="retroModeText" src="https://hasup.net/uni/telemetria/files/main.png">
+    </div>
+
+      <div class="room-control-box">
+          <div class="f1-font" style="font-size: 22px; color: var(--text-color);" data-i18n="enterRoomCode">Oda Kodunu Giriniz</div>
+          <input type="text" id="acRoomInput" placeholder="Örn: TLM-#########" autocomplete="off" />
+          <button id="btnAcConnect" onclick="window.connectToACRoom()"><i class="fa-solid fa-satellite-dish"></i> <span data-i18n="connectBtn">SİMÜLASYONA BAĞLAN</span></button>
+          <div id="acConnStatus" style="margin-top: 10px; font-size: 14px; font-weight: bold; color: var(--warning-color); height: 20px;"></div>
+      </div>
+  </div>
+
+  <div id="acDashboardScreen" class="ac-dashboard-wrapper">
+
+      <div id="acGarageOverlay" class="ac-garage-overlay">
+          <i class="fa-solid fa-car-wrench" style="font-size: 56px; color: var(--primary-color); margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(225,6,0,0.5));"></i>
+          <div class="f1-font" style="font-size: 32px; color: var(--text-color); font-weight: 900; letter-spacing: 3px;" data-i18n="ac_garage_mode">GARAGE MODE</div>
+          <div class="f1-font" style="font-size: 14px; color: var(--text-color); opacity: 0.6; letter-spacing: 1px; margin-top: 5px;" data-i18n="ac_waiting_telemetry">ENGINE OFF / WAITING FOR TELEMETRY...</div>
+          
+          <button onclick="window.disconnectAC()" style="margin-top: 30px; background: rgba(225, 6, 0, 0.15); color: white; border: 1px solid var(--primary-color); padding: 10px 24px; border-radius: 6px; cursor: pointer; font-family: 'Titillium Web'; font-weight: bold; transition: 0.2s; display: flex; align-items: center; gap: 10px; z-index: 110;" onmouseover="this.style.background='var(--primary-color)'" onmouseout="this.style.background='rgba(225, 6, 0, 0.15)'">
+              <i class="fa-solid fa-house-chimney"></i> <span data-i18n="ac_exit_btn">MOD SEÇİMİNE DÖN</span>
+          </button>  
+
+        </div>
+
+      <div id="acContentWrapper" class="ac-content-wrapper">
+          
+          <header class="ac-top-bar-compact">
+          <div class="ac-bar-left">
+              <div id="acConnLight" class="ac-led-green"></div>
+              <span id="acConnText" class="f1-font" data-i18n="ac_room_waiting" style="color:var(--text-color)">ROOM: WAITING...</span>
+          </div>
+          <div class="ac-bar-center f1-font">
+              <span><span data-i18n="ac_pos">POS</span>: <span id="acValPos" class="hl-text">1</span></span>
+              <span><span data-i18n="ac_lap">LAP</span>: <span id="acValLap" class="hl-text">1</span></span>
+              <span id="acValFlag" class="flag-ind none" data-i18n="ac_no_flag">NO FLAG</span>
+          </div>
+          <button class="vs-btn-small" onclick="window.disconnectAC()"><i class="fa-solid fa-power-off"></i> <span data-i18n="leaveBtn">AYRIL</span></button>
+      </header>
+
+      <main id="acMainGrid" class="ac-telemetry-grid-dense">
+          
+          <section class="ac-panel-dense">
+              <div class="ac-lb-container" style="margin-top: 0; border-top: none; padding-top: 0;">
+                  <div class="ac-lb-title" data-i18n="ac_leaderboard">LIVE LEADERBOARD</div>
+                  <div id="acLeaderboardList">
+                      </div>
+              </div>
+
+              <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--tag-border);">
+                  <div class="ac-panel-title-small" data-i18n="ac_dynamics">DİNAMİKLER & GİRDİLER</div>
+                  
+                  <div style="text-align:center; font-size:11px; color:var(--text-color); opacity:0.6; margin-bottom:4px; font-weight:bold; letter-spacing:1px;" data-i18n="ac_gforce">G-FORCE METER</div>
+                  <div class="ac-gforce-box" style="height: 140px; margin-bottom: 10px;">
+                      <div class="gforce-crosshair"></div>
+                      <div id="acGforceDot" class="gforce-dot"></div>
+                      <div class="gforce-vals f1-font">Lat: <span id="gLatVal">0.00</span> | Lon: <span id="gLonVal">0.00</span></div>
+                  </div>
+                  
+                  <div style="display: flex; flex-direction: column; align-items: center; margin: 10px 0;">
+                      <div class="ac-steering-wrapper">
+                          <svg id="acSteeringSvg" viewBox="0 0 100 60" style="width: 100px; height: 60px; transition: transform 0.05s linear;">
+                              <path d="M15,20 L30,10 L70,10 L85,20 L95,45 L85,55 L70,45 L30,45 L15,55 L5,45 Z" fill="var(--secondary-bg)" stroke="var(--text-color)" stroke-width="3" stroke-linejoin="round"/>
+                              <rect x="35" y="20" width="30" height="15" fill="var(--tag-border)" rx="2"/>
+                          </svg>
+                          
+                          <div id="acSteerVal" class="f1-font">0°</div>
+                      </div>
+                      </div>
+
+                  <div class="ac-pedals-horizontal" style="margin-top: 15px;">
+                      <div class="pedal-h-label">THR</div><div class="pedal-h-bg"><div id="acBarGas" class="pedal-h-fill green"></div></div>
+                      <div class="pedal-h-bg"><div id="acBarBrake" class="pedal-h-fill red"></div></div><div class="pedal-h-label">BRK</div>
+                  </div>
+              </div>
+          </section>
+
+          <section class="ac-panel-dense" style="padding: 0; flex-direction: row; overflow: hidden;">
+              
+              <div class="ac-center-left">
+                  <div class="ac-rpm-leds-compact" id="acRpmLeds">
+                      <div class="ac-led-c green" id="led-1"></div><div class="ac-led-c green" id="led-2"></div><div class="ac-led-c green" id="led-3"></div><div class="ac-led-c green" id="led-4"></div><div class="ac-led-c green" id="led-5"></div>
+                      <div class="ac-led-c red" id="led-6"></div><div class="ac-led-c red" id="led-7"></div><div class="ac-led-c red" id="led-8"></div><div class="ac-led-c red" id="led-9"></div><div class="ac-led-c red" id="led-10"></div>
+                      <div class="ac-led-c blue" id="led-11"></div><div class="ac-led-c blue" id="led-12"></div><div class="ac-led-c blue" id="led-13"></div><div class="ac-led-c blue" id="led-14"></div><div class="ac-led-c blue" id="led-15"></div>
+                  </div>
+                  <div id="acValRpmNum" class="f1-font" style="font-size: 22px; color: var(--text-color); margin-bottom: -15px; font-weight: 900; opacity: 0.8;">0 RPM</div>
+                  
+                  <div class="ac-gear-display-dense" id="acValGear">N</div>
+                  
+                  <div class="ac-speed-cluster">
+                      <div class="ac-speed-val" id="acValSpeed">0</div>
+                      <div class="ac-speed-unit">km/h</div>
+                  </div>
+
+                  <div class="ac-driver-info-board">
+                      <div class="di-row"><span class="di-label" data-i18n="ac_driver">DRIVER</span><span id="acValDriver" class="di-val" style="color:var(--primary-color);">UNKNOWN</span></div>
+                      <div class="di-row"><span class="di-label" data-i18n="ac_car">CAR</span><span id="acValCar" class="di-val">UNKNOWN</span></div>
+                      <div class="di-row"><span class="di-label" data-i18n="ac_tyres">TYRES</span><span id="acValTyreComp" class="di-val" style="color:#FFEA00;">UNKNOWN</span></div>
+                      
+                      <div class="di-divider"></div>
+                      
+                      <div class="di-row"><span class="di-label" data-i18n="ac_current_lap">CURRENT LAP</span><span id="acValCurTime" class="di-val time-text">0:00.000</span></div>
+                      <div class="di-row"><span class="di-label" data-i18n="ac_last_lap">LAST LAP</span><span id="acValLastTime" class="di-val time-text">0:00.000</span></div>
+                      <div class="di-row"><span class="di-label" data-i18n="ac_best_lap">BEST LAP</span><span id="acValBestTime" class="di-val time-text" style="color: var(--text-color); opacity: 0.5;">0:00.000</span></div>
+                      
+                      <div class="di-divider"></div>
+
+                      <div class="di-row">
+                          <span class="di-label" data-i18n="ac_sector">SECTOR</span>
+                          <span id="acValSector" class="di-val" style="font-size: 18px;">1</span>
+                      </div>
+                      <div class="di-row">
+                          <span class="di-label" data-i18n="ac_penalty">PENALTY</span>
+                          <span id="acValPenalty" class="di-val" style="color: #FF1744;">0</span>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="ac-center-right">
+                  
+                  <div id="acMapImageLayer" class="ac-map-layer"></div>
+                  
+                  <div id="acTrackNameDisplay" class="ac-track-title" data-i18n="ac_track">TRACK: UNKNOWN</div>
+                  
+                  <canvas id="acLiveMapCanvas"></canvas>
+                  
+                  <button onclick="window.resetAcMap(true)" style="position: absolute; bottom: 15px; right: 20px; z-index: 10; background: rgba(0,0,0,0.6); color: white; border: 1px solid var(--tag-border); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-family: 'Titillium Web'; font-weight: bold; transition: 0.2s;" onmouseover="this.style.background='var(--primary-color)'" onmouseout="this.style.background='rgba(0,0,0,0.6)'">
+                      <i class="fa-solid fa-rotate-right"></i> <span data-i18n="ac_reset_map">HARİTAYI SIFIRLA</span>
+                  </button>
+              </div>
+
+          </section>
+
+          <section class="ac-panel-dense">
+              <div class="ac-panel-title-small" data-i18n="ac_car_status">ARAÇ DURUMU</div>
+              
+              <div style="text-align:center; font-size:11px; color:var(--text-color); opacity:0.6; margin-bottom:4px; font-weight:bold; letter-spacing:1px;" data-i18n="ac_tyre_info">LASTİK BİLGİLERİ</div>
+              <div class="ac-tyre-pro-grid">
+                  <div class="ac-tyre-pro"><span id="t_fl_t">0°C</span><br><small id="t_fl_p">0 psi</small></div>
+                  <div class="ac-tyre-pro"><span id="t_fr_t">0°C</span><br><small id="t_fr_p">0 psi</small></div>
+                  <div class="ac-tyre-pro"><span id="t_rl_t">0°C</span><br><small id="t_rl_p">0 psi</small></div>
+                  <div class="ac-tyre-pro"><span id="t_rr_t">0°C</span><br><small id="t_rr_p">0 psi</small></div>
+              </div>
+
+              <div class="ac-matrix-grid">
+                  <div class="sys-led" id="acLightDRS">DRS</div>
+                  <div class="sys-led" id="acLightTC">TC</div>
+                  <div class="sys-led" id="acLightABS">ABS</div>
+                  <div class="sys-led" id="acLightPIT">PIT</div>
+              </div>
+
+              <div style="margin-top: auto; width: 100%; display: flex; flex-direction: column; gap: 12px; padding-top: 10px; border-top: 1px solid var(--tag-border);"> 
+                  <div>
+                      <div style="font-size: 10px; color: var(--text-color); opacity:0.8; margin-bottom: 4px; font-weight:800; letter-spacing: 1px;">
+                          <span data-i18n="ac_fuel">FUEL LEVEL</span> 
+                          <span id="acValFuel" style="float:right; color:var(--text-color); opacity:1; font-weight:900;">0.0 L</span>
+                      </div>
+                      <div style="width: 100%; height: 8px; background: var(--progress-bg); border-radius:4px; overflow:hidden; border: 1px solid var(--tag-border); box-shadow: inset 0 1px 3px var(--progress-shadow);">
+                          <div id="acBarFuel" style="height: 100%; width: 100%; background: #2979FF; transition: width 0.5s, background-color 0.5s;"></div>
+                      </div>
+                  </div>
+                  <div>
+                      <div style="font-size: 10px; color: var(--text-color); opacity:0.8; margin-bottom: 4px; font-weight:800; letter-spacing: 1px;">
+                          <span data-i18n="ac_damage">DAMAGE</span> 
+                          <span id="acValDamage" style="float:right; color:#FF1744; opacity:1; font-weight:900;">0%</span>
+                      </div>
+                      <div style="width: 100%; height: 6px; background: var(--progress-bg); border-radius:3px; overflow:hidden; box-shadow: inset 0 1px 3px var(--progress-shadow);"><div id="acBarDamage" style="height: 100%; width: 0%; background: #FF1744; transition: width 0.3s;"></div></div>
+                  </div>
+              </div>
+          </section>
+      </main>
+  </div>
+
+
+</div>
