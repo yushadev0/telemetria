@@ -42,7 +42,7 @@ Turn your browser into a live data center while you hit the track in Assetto Cor
 * **Smart Race Control:** View live leaderboards and current flags (Yellow, Blue, Black). The system features an automated cut detector that flags invalid laps and official game penalties.
 * **Intelligent Garage Mode:** When you enter the pits or pause the game, the dashboard automatically blurs and transitions into a clean "Garage Mode" overlay.
 
-![Assetto Corsa Live Dashboard](assetts/pitwall1.png)
+![Assetto Corsa Live Dashboard](assets/pitwall1.png)
 
 ### Universal Features
 * **Adaptive Interface:** Instantly switch between sleek Dark and Light themes to suit your environment.
