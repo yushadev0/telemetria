@@ -1,0 +1,46 @@
+
+# Derlenmiş Çalıştırılabilir Dosyalar ve Kütüphaneler (Binaries)
+*.exe
+*.dll
+*.bpl
+*.bpi
+*.dcp
+*.so
+*.dylib
+*.a
+*.lib
+
+# Derlenmiş Unit ve Object Dosyaları (Compiled Units)
+*.dcu
+*.o
+*.obj
+*.ppu
+*.hpp
+
+# RAD Studio / Delphi Lokal Ayar ve Ön Bellek Dosyaları
+*.local
+*.identcache
+*.tvsconfig
+*.stat
+*.~*
+*.dres
+*.skincfg
+*.projdata
+*.cgl
+
+# Delphi Çıktı ve Yedek Klasörleri (Derleme Klasörleri)
+Win32/
+Win64/
+__history/
+__recovery/
+Debug/
+Release/
+
+# VS Code / Cursor / Diğer Editörler
+.vscode/
+.idea/
+
+# Windows & Mac Sistem Dosyaları
+.DS_Store
+Thumbs.db
+Desktop.ini

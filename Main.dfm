@@ -1,0 +1,97 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  ClientHeight = 600
+  ClientWidth = 800
+  Caption = 'MainForm'
+  BorderStyle = bsNone
+  WindowState = wsMaximized
+  OldCreateOrder = False
+  MonitoredKeys.Keys = <>
+  OnAfterShow = UniFormAfterShow
+  OnCreate = UniFormCreate
+  OnDestroy = UniFormDestroy
+  TextHeight = 15
+  object MainHTML: TUniHTMLFrame
+    Left = 0
+    Top = 0
+    Width = 800
+    Height = 600
+    Hint = ''
+    Align = alClient
+    OnAjaxEvent = MainHTMLAjaxEvent
+  end
+  object sgcWebSocketClient1: TsgcWebSocketClient
+    Host = 'hasup.net'
+    Port = 8000
+    ConnectTimeout = 0
+    ReadTimeout = -1
+    WriteTimeout = 0
+    TLS = False
+    Proxy.Enabled = False
+    Proxy.Port = 8080
+    Proxy.ProxyType = pxyHTTP
+    HeartBeat.Enabled = False
+    HeartBeat.Interval = 300
+    HeartBeat.Timeout = 0
+    IPVersion = Id_IPv4
+    OnConnect = sgcWebSocketClient1Connect
+    OnMessage = sgcWebSocketClient1Message
+    OnException = sgcWebSocketClient1Exception
+    Authentication.Enabled = False
+    Authentication.URL.Enabled = True
+    Authentication.Session.Enabled = False
+    Authentication.Basic.Enabled = False
+    Authentication.Token.Enabled = False
+    Authentication.Token.AuthName = 'Bearer'
+    Extensions.DeflateFrame.Enabled = False
+    Extensions.DeflateFrame.WindowBits = 15
+    Extensions.PerMessage_Deflate.Enabled = False
+    Extensions.PerMessage_Deflate.ClientMaxWindowBits = 15
+    Extensions.PerMessage_Deflate.ClientNoContextTakeOver = False
+    Extensions.PerMessage_Deflate.MemLevel = 9
+    Extensions.PerMessage_Deflate.ServerMaxWindowBits = 15
+    Extensions.PerMessage_Deflate.ServerNoContextTakeOver = False
+    Options.CleanDisconnect = False
+    Options.FragmentedMessages = frgOnlyBuffer
+    Options.Parameters = '/'
+    Options.RaiseDisconnectExceptions = True
+    Options.ValidateUTF8 = False
+    Specifications.Drafts.Hixie76 = False
+    Specifications.RFC6455 = True
+    NotifyEvents = neNoSync
+    LogFile.Enabled = False
+    QueueOptions.Binary.Level = qmNone
+    QueueOptions.Ping.Level = qmNone
+    QueueOptions.Text.Level = qmNone
+    WatchDog.Attempts = 0
+    WatchDog.Enabled = False
+    WatchDog.Interval = 10
+    Throttle.BitsPerSec = 0
+    Throttle.Enabled = False
+    LoadBalancer.Enabled = False
+    LoadBalancer.Port = 0
+    TLSOptions.VerifyCertificate = False
+    TLSOptions.VerifyDepth = 0
+    TLSOptions.Version = tlsUndefined
+    TLSOptions.IOHandler = iohOpenSSL
+    TLSOptions.OpenSSL_Options.APIVersion = oslAPI_1_0
+    TLSOptions.OpenSSL_Options.LibPath = oslpNone
+    TLSOptions.OpenSSL_Options.UnixSymLinks = oslsSymLinksDefault
+    TLSOptions.SChannel_Options.CertStoreName = scsnMY
+    TLSOptions.SChannel_Options.CertStorePath = scspStoreCurrentUser
+    Left = 624
+    Top = 64
+  end
+  object UniTimer1: TUniTimer
+    Interval = 1
+    ClientEvent.Strings = (
+      'function(sender)'
+      '{'
+      ' '
+      '}')
+    OnTimer = UniTimer1Timer
+    Left = 624
+    Top = 120
+  end
+end
