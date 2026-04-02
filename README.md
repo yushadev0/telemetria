@@ -2,6 +2,8 @@
 ---
 > *Experience real-time racing data and historical Formula 1 analysis directly in your browser.*
 
+Watch Telemetria capturing live telemetry data from Assetto Corsa in real-time:
+
 ![Telemetria Live Action Preview](assets/telemetria.gif)
 
 Telemetria is your ultimate web-based pit wall. Whether you are diving deep into historical (2018-2026+) Formula 1 data to uncover racing secrets or analyzing your own live laps in Assetto Corsa, Telemetria provides professional-grade insights without the need for heavy desktop software. <br><br>To start using Telemetria and connect with the live data, please ensure you read the 'Getting Started' section below.
