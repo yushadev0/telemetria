@@ -27,5 +27,6 @@
       "Delphi istemcisi, Python API'si, React arayüzü ve oyun içi mod birlikte çalışır."
     ]
   },
-  "cover": "showcase-cover.webp"
+  "cover": "showcase-cover.webp",
+  "demo": "https://yusa.app/telemetria/"
 }
