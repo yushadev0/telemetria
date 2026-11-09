@@ -1,0 +1,31 @@
+{
+  "name": "Telemetria",
+  "year": 2026,
+  "stack": [
+    "Delphi",
+    "UniGUI",
+    "Python",
+    "FastAPI",
+    "React"
+  ],
+  "related": [
+    "telemetria-web",
+    "telemetria-api",
+    "telemetria-assetto-corsa-mod"
+  ],
+  "tagline": {
+    "en": "A pit wall for real F1 races.",
+    "tr": "Gerçek F1 yarışları için bir pit duvarı."
+  },
+  "body": {
+    "en": [
+      "It lets you study Formula 1 races from 2018 to today, lap by lap. While you drive in Assetto Corsa, it turns into a live race-engineer screen.",
+      "A Delphi client, a Python API, a React interface and an in-game mod work together."
+    ],
+    "tr": [
+      "2018'den bugüne Formula 1 yarışlarını tur tur incelemenizi sağlar. Assetto Corsa'da sürerken de canlı bir yarış mühendisi ekranına dönüşür.",
+      "Delphi istemcisi, Python API'si, React arayüzü ve oyun içi mod birlikte çalışır."
+    ]
+  },
+  "cover": "showcase-cover.webp"
+}
